@@ -1,0 +1,36 @@
+.col-xs-10 > h1 {
+	margin-top: 10%;
+}
+
+.col-xs-6 > .row > .col-xs-4 {
+	height: 4rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.col-xs-6 > .row > .col-xs-4:nth-child(2) {
+	font-size: 3rem;
+}
+
+#mainTime {
+	font-size: 10rem;
+}
+
+#headline {
+	font-size: 4rem;
+}
+
+#mainBlock {
+	margin: 10% 0% 10% 0%;
+	border-radius: 1rem;
+	border: 2px solid #d3d3d3;
+}
+
+.controllers {
+	margin-bottom: 10%;
+}
+
+.controllers > .col-xs-4 {
+	font-size: 3rem;
+}
