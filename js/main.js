@@ -9,7 +9,7 @@ $(document).ready(function() {
 	var restTitle = $("#restTitle").html();
 	var workTitle = $("#workTitle").html();
 	var phaseSwitch = true;
-	var alarm = $("#alarm");
+	var alarm = $("#alarm")[0];
 
 	// closure for updating html
 	function updater(tag) {
@@ -107,19 +107,22 @@ $(document).ready(function() {
 	// configure buttons that affect timer
 	// starts timer
 	$(".glyphicon-play").click(function() {
-		running = true;
-		phaseSwitch = true;
-		if ($("#headline").html() == restTitle) {
-			centralTime = restTime;
+		if (!running) {
+			running = true;
+			phaseSwitch = true;
+			if ($("#headline").html() == restTitle) {
+				centralTime = restTime;
+			}
+			else {
+				centralTime = workTime;
+			}
+			timeOut();
 		}
-		else {
-			centralTime = workTime;
-		}
-		timeOut();
 	}); 
 
 	// pauses the timer
 	$(".glyphicon-pause").click(function() {
+		running = false;
 		clearInterval(secondTimer);
 		clearTimeout(phaseTimer);
 		if ($("#headline").html() == restTitle) {
