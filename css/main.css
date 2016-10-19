@@ -34,3 +34,8 @@
 .controllers > .col-xs-4 {
 	font-size: 3rem;
 }
+
+span {
+	cursor: pointer;
+	cursor: hand;
+}
