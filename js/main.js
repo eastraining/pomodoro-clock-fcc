@@ -77,7 +77,6 @@ $(document).ready(function() {
 
 	// configure the phase switcher
 	function timeOut() {
-		console.log(centralTime);
 		if (centralTime <= 0) {
 			alarm.play();
 			clearInterval(secondTimer);
@@ -93,7 +92,6 @@ $(document).ready(function() {
 				centralTime = restTime;
 				phaseSwitch = true;
 			}
-			console.log(centralTime);
 			updater($("#mainTime"))(timedisplay(centralTime));	
 		}
 		startTimer();
@@ -134,9 +132,6 @@ $(document).ready(function() {
 		running = false;
 		clearInterval(secondTimer);
 		clearTimeout(phaseTimer);
-		console.log(centralTime);
-		console.log(running);
-		console.log(phaseSwitch);
 		updater($("#headline"))(workTitle);
 		workTime = work * 60000;
 		restTime = rest * 60000;
