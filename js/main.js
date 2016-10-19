@@ -9,7 +9,7 @@ $(document).ready(function() {
 	var restTitle = $("#restTitle").html();
 	var workTitle = $("#workTitle").html();
 	var phaseSwitch = true;
-	var alarm = new Audio("./assets/alarm.mp3");
+	var alarm = $("#alarm");
 
 	// closure for updating html
 	function updater(tag) {
