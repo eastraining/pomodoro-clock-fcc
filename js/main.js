@@ -2,8 +2,9 @@ $(document).ready(function() {
 	var work = 25;
 	var rest = 5;
 	var running = false;
-	var workTime = work * 60000;
-	var restTime = rest * 60000;
+	var machineTime = 60000;
+	var workTime = work * machineTime;
+	var restTime = rest * machineTime;
 	var centralTime = 0;
 	var restTitle = $("#restTitle").html();
 	var workTitle = $("#workTitle").html();
@@ -30,7 +31,7 @@ $(document).ready(function() {
 	$("#restUp").click(function() {
 		var tag = $("#restCounter");
 		rest++;
-		restTime = rest * 60000;
+		restTime = rest * machineTime;
 		updater(tag)(rest.toString());
 		if (!running && $("#headline").html() == restTitle) {
 			updater($("#mainTime"))(timedisplay(restTime));
@@ -40,7 +41,7 @@ $(document).ready(function() {
 	$("#restDown").click(function() {
 		var tag = $("#restCounter");
 		rest--;
-		restTime = rest * 60000;
+		restTime = rest * machineTime;
 		updater(tag)(rest.toString());
 		if (!running && $("#headline").html() == restTitle) {
 			updater($("#mainTime"))(timedisplay(restTime));
@@ -50,7 +51,7 @@ $(document).ready(function() {
 	$("#workUp").click(function() {
 		var tag = $("#workCounter");
 		work++;
-		workTime = work * 60000;
+		workTime = work * machineTime;
 		updater(tag)(work.toString());
 		if (!running && $("#headline").html() == workTitle) {
 			updater($("#mainTime"))(timedisplay(workTime));
@@ -60,7 +61,7 @@ $(document).ready(function() {
 	$("#workDown").click(function() {
 		var tag = $("#workCounter");
 		work--;
-		workTime = work * 60000;
+		workTime = work * machineTime;
 		updater(tag)(work.toString());
 		if (!running && $("#headline").html() == workTitle) {
 			updater($("#mainTime"))(timedisplay(workTime));
@@ -82,13 +83,13 @@ $(document).ready(function() {
 			clearInterval(secondTimer);
 			if ($("#headline").html() == restTitle) {
 				updater($("#headline"))(workTitle);
-				workTime = work * 60000;
+				workTime = work * machineTime;
 				centralTime = workTime;
 				phaseSwitch = true;
 			}
 			else {
 				updater($("#headline"))(restTitle);
-				restTime = rest * 60000;
+				restTime = rest * machineTime;
 				centralTime = restTime;
 				phaseSwitch = true;
 			}
@@ -104,6 +105,7 @@ $(document).ready(function() {
 	}
 
 	// configure buttons that affect timer
+	// starts timer
 	$(".glyphicon-play").click(function() {
 		running = true;
 		phaseSwitch = true;
@@ -128,13 +130,14 @@ $(document).ready(function() {
 		}
 	});
 
+	// resets everything to chosen times
 	$(".glyphicon-repeat").click(function() {
 		running = false;
 		clearInterval(secondTimer);
 		clearTimeout(phaseTimer);
 		updater($("#headline"))(workTitle);
-		workTime = work * 60000;
-		restTime = rest * 60000;
+		workTime = work * machineTime;
+		restTime = rest * machineTime;
 		updater($("#mainTime"))(timedisplay(workTime));
 	});
 });
